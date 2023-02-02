@@ -36,8 +36,8 @@ a{
             width: 100%;
             display: flex;
             align-items: flex-end;
-            justify-content: space-between;
-            padding-bottom: 10px;
+            justify-content: space-around;
+            padding: 10px 0;
         }
         @include mq(sp){
             display: flex;
@@ -74,6 +74,8 @@ h1{
 .footer{
     width: 100%;
     background-color: #EFEFEF;
+    position: relative;
+    z-index: 999;
     &__nav{
         @include mq(sp){
             width: 80%;

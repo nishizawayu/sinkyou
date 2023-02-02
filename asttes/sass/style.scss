@@ -150,6 +150,7 @@ $breakpoint: (
             height: 4px;
             background-color: #000;
             border-radius: 4px;
+            transition: all .2s ease-out;
             &:nth-of-type(1){
                 top: 0;
             }
@@ -170,6 +171,7 @@ $breakpoint: (
 
 .hambtn.act{
     span{
+        transition: all .2s ease-out;
         &:nth-of-type(1){
             -webkit-transform: translateY(10px) rotate(45deg);
             transform: translateY(10px) rotate(45deg);
@@ -187,7 +189,7 @@ $breakpoint: (
 
 main{
     @include mq(pc){
-        padding-top: 85px;
+        padding-top: 8%;
     }
     @include mq(sp){
         padding-top: 80px;
@@ -209,6 +211,42 @@ main{
         padding-top: 60px;
     }
 }
+
+@keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translatex(-150px);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .slideInLeft {
+    animation-name: slideInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+  }
+
+  @keyframes slideInBottom {
+    from {
+      opacity: 0;
+      transform: translatey(150px);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .slideInBottom {
+    animation-name: slideInBottom;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+  }
 
 .fv{
     position: relative;
@@ -726,7 +764,7 @@ main{
             font-size: 48px;
             font-weight: 500;
             margin: 0 auto;
-            padding-top: 60px;
+            padding-top: 40px;
         }
         
     }
@@ -796,9 +834,10 @@ main{
     width: 100%;
     background-color: #FFF1BB;
     position: relative;
+    transition: all .3s ease-out;
 
     &__tab-flex{
-        background-color: #B5BBFC;
+        background-color: #EFEFEF;
         transition: all 0.2s;
         @include mq(sp){
             width: 100%;
@@ -815,12 +854,7 @@ main{
             writing-mode: vertical-rl;
             border-radius: 22px 0 0 22px;
         }
-        &.act1{
-            background-color:  #EFEFEF;
-        }
-        &.act2{
-            background-color: #B5BBFC;
-        }
+        cursor: pointer;
     }
 
     &__tab_container{
@@ -863,6 +897,7 @@ main{
                 font-weight: bold;
             }
         }
+        
     }
 
     &__btn-woman{
@@ -897,7 +932,7 @@ main{
             background-color:  #EFEFEF;
         }
         &.act2{
-            background-color: #B5BBFC;
+            background-color: #f7bdc2;
         }
 
     }
@@ -908,34 +943,32 @@ main{
         z-index: 100;
         opacity: 1;
         &.act1{
-            z-index: 100;
+            z-index: 1;
             opacity: 1;
+            display: block;
         }
         &.act2{
             z-index: -100;
             opacity: 0;
+            display: none;
         }
     }
 
     &__red{
-        position: absolute;
-        @include mq(sp){
-            top: 160px;
-        }
-        @include mq(pc){
-            top: 85px;
-        }
-
+        position: relative;
         z-index: -100;
         background-color: #FBEEEF;
         opacity: 0;
+        display: none;
         &.act1{
             z-index: -100;
             opacity: 0;
+            display: none;
         }
         &.act2{
-            z-index: 100;
+            z-index: 1;
             opacity: 1;
+            display: block;
         }
     }
 
@@ -1326,37 +1359,46 @@ main{
         &.ON1{
             position: relative;
             opacity: 1;
+            z-index: 100;
             &.act{
                 opacity: 0;
+                z-index: -1;
             }
         }
     
         &.OFF1{
             position: relative;
             opacity: 0;
+            z-index: -1;
             &.act{
                 opacity: 1;
+                z-index: 100;
             }
         }
 
         &.ON2{
             position: relative;
             opacity: 1;
+            z-index: 100;
             &.act{
                 opacity: 0;
+                z-index: -1;
             }
         }
     
         &.OFF2{
             position: relative;
             opacity: 0;
+            z-index: -1;
             &.act{
                 opacity: 1;
+                z-index: 100;
             }
         }
         &.ON3{
             position: relative;
             opacity: 1;
+            z-index: 100;
             &.act{
                 opacity: 0;
             }
@@ -1365,24 +1407,30 @@ main{
         &.OFF3{
             position: relative;
             opacity: 0;
+            z-index: -1;
             &.act{
                 opacity: 1;
+                z-index: 100;
             }
         }
 
         &.ON4{
             position: relative;
             opacity: 1;
+            z-index: 100;
             &.act{
                 opacity: 0;
+                z-index: -1;
             }
         }
     
         &.OFF4{
             position: relative;
             opacity: 0;
+            z-index: -1;
             &.act{
                 opacity: 1;
+                z-index: 100;
             }
         }
 
@@ -1451,6 +1499,7 @@ main{
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all .2s;
             .ON{
                 text-align: center;
                 font-size: 18px;
@@ -1467,7 +1516,11 @@ main{
                     font-size: 30px;
                 }
             }
+            &:hover{
+                transform: scale(1.1);
+            }   
         }
+        cursor: pointer;
     }
 
     &__onbtn{
@@ -1624,15 +1677,27 @@ main{
     }
 
     &__con{
-        width: 80%;
-        padding-top: 60px;
-        max-width: 450px;
+        
+        @include mq(sp){
+            width: 80%;
+            max-width: 450px;
+            padding-top: 60px;
+            grid-template-areas: 
+            "img"
+            "con"
+            "txt";
+        }   
+        @include mq(pc){
+            width: 80%;
+            padding-top: 120px;
+            grid-template-areas: 
+            "con img"
+            "txt img";
+            grid-template-columns: 1fr 1fr;
+            gap: 3%;
+        }
         margin: 0 auto;
         display: grid;
-        grid-template-areas: 
-        "img"
-        "con"
-        "txt";
     
         &_last{
             padding-bottom: 60px;
@@ -1652,28 +1717,51 @@ main{
     }
 
     &__h3{
-        font-size: 24px;
         font-weight: bold;
         grid-area: con;
-        padding-top: 30px;
+        @include mq(sp){
+            font-size: 24px;
+            padding-top: 30px;
+        }
+        @include mq(pc){
+            font-size: 36px;
+            padding-top: 60px;
+        }
     }
 
     &__txt{
-        padding-top: 30px;
-        font-size: 18px;
         font-weight: 500;
         grid-area: txt;
+        @include mq(sp){
+            padding-top: 30px;
+            font-size: 18px;
+        }
+        @include mq(pc){
+            padding-top: 60px;
+            font-size: 24px;
+        }
+        
     }
 
     &__conteiner{
         display: flex;
         flex-wrap: wrap;
-        gap: 2%;
+        justify-content: space-between;
+        @include mq(pc){
+            align-content: flex-end;
+        }
+
+        @include mq(sp){
+            gap: 2%;
+        }
         grid-area: img;
     }
 
     &__img{
-        width: 32%;
+        width: 30%;
+        @include mq(pc){
+            margin-top: 20px;
+        }
         &_big{
             width: 100%;
         }
@@ -1684,6 +1772,9 @@ main{
 
     &__btn{
         width: 90%;
+        @include mq(pc){
+            width: 200%;
+        }
         display: flex;
         flex-direction: row-reverse;
         @include mq(sp){
@@ -1695,6 +1786,7 @@ main{
         
         .circle{
             @include move-btn(-75%,-35%);
+            font-size: 24px;
             &:hover{
                 @include move-btn(-50%,60%);    
             }

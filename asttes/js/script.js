@@ -18,12 +18,12 @@ hambtn.addEventListener("click", () => {
 
 try {
   let mySwiper = new Swiper(".swiper-container", {
-    effect: "slide",
+    effect: "fade",
     speed: 1000,
     loop: true,
     loopAdditionalSlides: 1,
     autoplay: {
-      delay: 4000,
+      delay: 3000,
       disableOnInteraction: false,
     },
   });
