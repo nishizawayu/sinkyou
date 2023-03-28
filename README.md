@@ -43,9 +43,8 @@ CSS設計手法
 
 コンセプト
  
-  choice
-  会社側が働く場所を提供するという意味でoffer a choiceと、働く側が自分の意志で決めるというmake a choiceの二つの意味から
-  choiceにしました
+　choice
+　会社側が働く場所を提供するという意味でoffer a choiceと、働く側が自分の意志で決めるというmake a choiceの二つの意味からchoiceにしました
   
 工夫点
  
